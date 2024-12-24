@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 export const App = () => {
 	// Можно задать 2 состояния — steps и activeIndex
-	const [steps, setSteps] = useState(() => data);
+
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [steps] = useState(data);
 
 	// И определить 3 обработчика: Клик назад, Клик вперед, Начать сначала
 	//setActiveIndex(0);
@@ -26,7 +27,7 @@ export const App = () => {
 
 	const onStepsClickOn = (event) => {
 		setActiveIndex(() => {
-			return event.target.id;
+			return Number(event.target.id);
 		});
 	};
 
@@ -39,6 +40,7 @@ export const App = () => {
 				<div className={styles.steps}>
 					<div className={styles['steps-content']}>
 						{/* Для получения активного контента использйте steps и activeIndex */}
+						{Number(activeIndex)}
 						{steps[Number(activeIndex)].content}
 					</div>
 					<>
